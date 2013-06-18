@@ -1,0 +1,20 @@
+.utra
+{
+	-webkit-transition:all 2000ms ease-in 50ms
+}
+
+
+.a-op
+{
+	opacity:0
+}
+
+.a-mr
+{
+	-webkit-transform:translateX(100%);
+}
+
+.a-ml
+{
+	-webkit-transform:translateX(-100%);
+}

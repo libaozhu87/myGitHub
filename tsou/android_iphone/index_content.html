@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+  <head>
+    <title>
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/ui-list.css">
+        <link rel="stylesheet" href="css/ui-base.css">
+        <link rel="stylesheet" href="css/ui-box.css">
+        <link rel="stylesheet" href="css/ui-color.css">
+		<link rel="stylesheet" href="css/ui-res.css">
+		<link rel="stylesheet" href="css/ui-img.css">
+		<link rel="stylesheet" href="css/ui-anim.css">
+    <script src="js/zy_control.js">
+    </script>
+    <script src="js/zy_click.js">
+    </script>
+      <script src="js/zy_tmpl.js">
+      </script>
+    <script>
+	</script>
+  </head>
+<body class="um-vp" ontouchstart>
+	<!--聚焦条开始-->
+<!--块容器开始-->
+<div class="ub ub-ver  b-gra uc-a1 t-wh ">	
+ <div class="ubb b-gra c-blu2 c-m4 uinn uinl unw11 tx-c  uc-t1">滚动图片</div>
+</div>
+<!--块容器结束-->
+	<div id ="focusContain" class="ub uh uof uinn4" >
+	</div>
+	<!--聚焦条结束-->
+<!--块容器开始-->
+<div class="ub ub-ver  b-gra uc-a1 t-wh ">	
+ <div class="ubb b-gra c-blu2 c-m4 uinn uinl unw11 tx-c  uc-t1">产业动态</div>
+</div>
+<!--块容器结束-->	
+    <!--产业动态-->
+    <div id="industryNew" ></div>
+    <!--产业动态结束-->
+<!--块容器开始-->
+<div class="ub   b-gra uc-a1 t-wh ">	
+ <div class="ubb b-gra c-blu2 c-m4 uinn uinl unw11 tx-c  uc-t1">产品展示</div>
+</div>
+<!--块容器结束-->	
+<div class="ub ub-ver c-blu uh umh14">
+	<div class="ub-f1 ub">
+		<div class="ub-f6 uc-a uba1 umar-t uimgs" style="background-image: url('css/img/testPic/testF1.jpg')" >
+   </div>
+		<div class="ub-f4 uc-a uba1 umar-t uimgs" style="background-image: url('css/img/testPic/testF2.jpg')"></div>
+	</div>
+	<div class="ub-f1 ub">
+        <div class="ub-f4 uc-a uba1 umar-t uimgs" style="background-image: url('css/img/testPic/testF3.jpg')"></div>
+        <div class="ub-f6 uc-a uba1 umar-t uimgs" style="background-image: url('css/img/testPic/testF4.jpg')"></div>
+	</div>
+	
+</div>
+
+
+
+</body>
+<script src="js/my$.js"></script>
+<script>
+zy_init();
+var  nowValue = 0;
+var stepValue =100;
+window.uexOnload=function(type)
+{    
+	if(!type){
+		uexWindow.setBounce("1");
+		uexWindow.showBounceView("0","#FFF","0");
+		uexWindow.showBounceView("1","#FFF","0");
+		var movePicfig = ["css/img/testPic/testF1.jpg","css/img/testPic/testF2.jpg","css/img/testPic/testF3.jpg","css/img/testPic/testF4.jpg","css/img/testPic/testF5.jpg"]
+        readyMove(movePicfig);
+		//setTimeout(startMove,200);
+        industryNew();
+	}
+}
+		function readyMove(contextArr){
+			var len = contextArr.length;
+			var newEles = [];
+			for(var i = 0;i<len; i++){
+                var picPath = 'url('+contextArr[i]+')';
+				newEles.push(my$.createEle("div").setAtt("id","subMove").setClass("utra uh umh4 uimgs").css({"backgroundImage":picPath}).getEle());
+			}
+			my$.Q("#focusContain").appends(newEles);
+		};
+        function startMove(){
+/*            var width =   "-"+my$.Q("#focusContain").getAtt("width")+"px";
+            my$.allQ("#subMove").animate({"left":"-320px"},function(){
+                my$.Q("#focusContain").childFtoL();
+            },2000);*/
+             var selfFun = arguments.callee;
+            nowValue -=stepValue;
+            var  elePosition  = "translateX("+nowValue+"%)";
+			var elels = my$.allQ("#subMove");
+            elels.css({"webkitTransform":elePosition});
+		    
+            setTimeout( function(){
+                my$.Q("#focusContain").childFtoL();
+				if(nowValue == elels.length){
+					stepValue*=-1;
+				}
+                selfFun();
+            },2500)
+        };
+ var newT ='<div class="ub umh6 uinn3 ubb b-gra">\
+        <div class="umw3 umar-a"><div class="uimgs uabs umw3 umh5" style="background-image:url(http://t1.qlogo.cn/mbloghead/c39e95b85b1b6bcd6f84/50)"></div></div>\
+<div class="ub-f1 ub ub-ver">\
+        <div class="tx-l uh t-blu ulev-1">${urse}</div>\
+        <div class="ub-f1">\
+        <div class="ub-con t-bla ulev-1 ut-ms">${context}</div>\
+        </div>\
+    <div class="t-blu  ulev-2 ub umar-t">\
+        <div class="ub-f1">发布日期</div>\
+        <div>${time}</div>\
+        </div>\
+        </div>\
+        </div>';
+var info ={"0": {"urse":"微博精灵","context":"祝贺@巴塞罗那足球俱乐部 中文官网落户腾讯，球迷快来#巴萨欧洲杯#话题","time":"今天22:00:12"},"1":{"urse":"微博精灵","context":"祝贺@巴塞罗那足球俱乐部 中文官网落户腾讯，球迷快来#巴萨欧洲杯#话题","time":"今天22:00:12"},"2": {"urse":"微博精灵","context":"祝贺@巴塞罗那足球俱乐部 中文官网落户腾讯，球迷快来#巴萨欧洲杯#话题","time":"今天22:00:12"},"3": {"urse":"微博精灵","context":"祝贺@巴塞罗那足球俱乐部 中文官网落户腾讯，球迷快来#巴萨欧洲杯#话题","time":"今天22:00:12"}}
+
+function industryNew(){
+　　var s=zy_tmpl(newT,info,zy_tmpl_count(info));
+　　var d=document.createElement("DIV");
+　　d.innerHTML=s;
+　　$$("industryNew").appendChild(d);
+    }
+
+
+
+</script>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+<head>
+    <title>
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/ui-input.css">
+    <link rel="stylesheet" href="css/ui-res.css">
+    <link rel="stylesheet" href="css/ui-btn.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/ui-box.css">
+    <link rel="stylesheet" href="css/ui-color.css">
+	<link rel="stylesheet" href="css/ui-anim.css">
+    <script src="js/zy_control.js">
+    </script>
+    <script src="js/zy_click.js">
+    </script>
+	<script src="js/zy_event.js">
+    </script>
+    <script src="js/zy_anim.js">
+    </script>
+</head>
+<body class="um-vp uof ub-img" ontouchstart>
+<!--块容器开始-->
+<div id="introduceTitle" class="ub uba b-gra c-wh c-m4 t-bla  ">	
+ <div class="ubb ub-f1 uinn  tx-c umar-a">公司介绍</div>	 
+<div class="ubb  ub-f1 uinn  umar-a tx-c">加盟合作</div>	
+</div>
+
+<!--块容器开始-->
+<div id = "introduceContent" class="utra ub uba b-gra t-bla">	
+ <div class="ubr b-gra uh uinn ">
+ 	公司介绍内容
+ </div>	 
+ 
+ <div class="ubr b-gra uh uinn">
+ 	加盟合作内容
+ </div>
+ </div>
+<!--块容器结束-->
+
+<div>
+	
+	
+</div> 
+ 
+ 
+<!--块容器结束-->
+
+
+
+
+</body>
+
+<script>
+    zy_init();
+    window.uexOnload=function(type)
+    {
+        if(!type){
+            uexWindow.setBounce("1");
+            uexWindow.showBounceView("0","#FFF","0");
+            uexWindow.showBounceView("1","#FFF","0");
+            trans();
+
+        }
+    }
+    var ii=-1;
+    function trans()
+    {
+        uexWindow.beginAnimition();
+        uexWindow.setAnimitionDuration(2000);
+        uexWindow.makeTranslation(ii*100,0,0);
+        uexWindow.commitAnimition();
+        ii=ii*(-1);
+    }
+    uexWindow.onAnimationFinish = function(){
+        alert("product");
+    }
+
+    $$("introduceContent").gesture=new zyEvent("items",
+            function(me,dx,dy){//移动过程中事件
+
+            },
+            function(me,dx,dy,t){//手指松开后事件
+                if(t=="right")
+                    zy_anim_push(me,"a-mr");
+            },false,function(e)//对象动画结束事件
+            {
+                uexWindow.evaluateScript("root","0","loadindexcontent()");
+            })
+    }
+
+
+</script>
+</html>

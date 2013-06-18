@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/ui-btn.css">
+    <link rel="stylesheet" href="css/ui-tab.css">
+        <link rel="stylesheet" href="css/ui-base.css">
+        <link rel="stylesheet" href="css/ui-box.css">
+        <link rel="stylesheet" href="css/ui-color.css">
+		<link rel="stylesheet" href="css/ui-res.css">
+		<link rel="stylesheet" href="css/ui-img.css">
+		<link rel="stylesheet" href="css/ui-anim.css">
+        <script src="js/zy_control.js"></script>
+        <script src="js/zy_click.js"></script>
+
+    </head>
+    <body class="um-vp c-wh" ontouchstart>
+        <div id="page_0" class="up ub ub-ver" tabindex="0">
+            <!--header开始-->
+            <div id="header" class="uh c-org c-m1 t-wh ub umar-b">
+            	<div class="uimgs umw11 umh3p5 logo">
+                <!--插入按钮控件-->
+            	</div>
+				<!--按钮开始-->
+<div onclick = "" onmousedown="zy_touch('btn-act')" class="btn uba b-bla uinn2 uinl c-blu c-m1 uc-a t-wh">确定</div>
+<!--按钮结束-->
+			</div>
+            <!--header结束-->
+			<!--content开始-->
+            <div id="content" class="ub-f1 tx-l t-bla ub-img6 res10">
+
+            </div><!--footer开始-->
+
+
+            <div id="footer" class="uf c-m2 c-bla t-wh">
+  <!--iPhone导航条开始-->
+<div class="ub c-blu c-m2 tab t-wh">
+ <input class="uhide" type="radio" name="tabSwitch" checked="true">
+	<div onclick="showIndex();" onmousedown="zy_touch('',zy_for)" class="ub-f1 ub ub-ver tab-act"><div class="ub-f1 ub-img5 tp-info"></div><div class="uinn ulev-2 tx-c">首	页</div></div>
+ <input class="uhide" type="radio" name="tabSwitch">
+	<div onclick="showProduct();" onmousedown="zy_touch('',zy_for)" class="ub-f1 ub ub-ver tab-act"><div class="ub-f1 ub-img5 tp-home"></div><div class="uinn ulev-2 tx-c">产品中心</div></div>
+	<input class="uhide" type="radio" name="tabSwitch">
+	<div onclick="showConnect();" onmousedown="zy_touch('',zy_for)" class="ub-f1 ub ub-ver tab-act"><div class="ub-f1 ub-img5 tp-set"></div><div class="uinn ulev-2 tx-c">练习我们</div></div>
+	<input class="uhide" type="radio" name="tabSwitch">
+	<div onclick="showElse();" onmousedown="zy_touch('',zy_for)" class="ub-f1 ub ub-ver tab-act"><div class="ub-f1 ub-img5 tp-shop"></div><div class="uinn ulev-2 tx-c">其	他</div></div>
+</div>
+<!--iPhone导航条结束-->
+            </div>
+            <!--footer结束-->
+        </div>
+    </body>
+    <script>
+    	zy_init();
+        window.uexOnload = function(type){
+
+
+            if (!type) {
+
+
+                zy_con("content", "index_content.html", 0, $$("header").offsetHeight);
+            }
+			window.onorientationchange=window.onresize=function()
+			{
+
+				zy_resize("content",0,$$("header").offsetHeight);
+			}
+        };
+		function showIndex(){
+
+            //uexWindow.openPopover("index", "0", "index_content.html",0, 0,$$("header").offsetHeight);
+            zy_con("content", "index_content.html", 0, $$("header").offsetHeight);
+		}
+	    function showProduct(){
+           // uexWindow.openPopover("content", "0", "product_content.html",0,0, $$("header").offsetHeight);
+            //uexWindow.open(content,0,"product_content.html",1);
+			zy_con("content", "product_content.html", 0, $$("header").offsetHeight);
+		}
+		function showConnect(){
+            //uexWindow.openPopover("connect", "0", "connect_content.html",0,0, $$("header").offsetHeight);
+			zy_con("content", "connect_content.html", 0, $$("header").offsetHeight);
+		}
+	   function showElse(){
+           //uexWindow.openPopover("else", "0", "else_content.html",0,0, $$("header").offsetHeight);
+			zy_con("content", "else_content.html", 0, $$("header").offsetHeight);
+		}
+
+        function showShare(){
+           // uexWindow.openPopover(inPopName,inDataType,inUrl,inData,
+                   // inX,inY,inWidth,inHeight,inFontSize,inFlag)
+            var s=window.getComputedStyle($$("content"),null);
+            uexWindow.openPopover("share", 0, "share_content.html","",220,$$("header").offsetHeight,100,int(s.height));
+            //zy_con("content", "else_content.html", 0, $$("header").offsetHeight);
+        }
+        function openMenu(){
+           var  listArr = ["45","78","89"];
+　　　      uexWindow.actionSheet("sdh","取消",listArr);
+        }
+		uexWindow.cbActionSheet  = bcAsheet;
+        function bcAsheet(opId,dataType,data){
+          alert(data);
+
+        }
+
+    </script>
+
+
+
+</html>
